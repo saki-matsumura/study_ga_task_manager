@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発言語
+- Ruby 3.0.1
+- Rails 6.1.7
 
-Things you may want to cover:
+## アプリケーションに取り入れる技術を就業Termで学んだ技術
+- Ajaxを使ったコメント機能
+- お気に入り機能
 
-* Ruby version
+## カリキュラムで学んでいない技術
+- OCR（文字認識機能）
 
-* System dependencies
+## 要件定義書類のリンク
+https://docs.google.com/spreadsheets/d/18jhyQsGz94CrCGKcy9IL_FdGcn9Aipd7XTc8KqNtE3s/edit#gid=0
 
-* Configuration
+ER図
+![ER図](images/er_diagram.png "er_diagram")
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+画面遷移図
+![画面遷移図](images/screen_transition_diagram.png "screen_transition_diagram")
