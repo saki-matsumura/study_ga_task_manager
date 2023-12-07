@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_07_083004) do
+ActiveRecord::Schema.define(version: 2023_12_07_085234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 2023_12_07_083004) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.text "memo"
+    t.date "deadline_on"
+    t.boolean "done", default: false
+    t.bigint "client_id", null: false
+    t.bigint "working_process_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_tasks_on_client_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+    t.index ["working_process_id"], name: "index_tasks_on_working_process_id"
   end
 
   create_table "type_of_tasks", force: :cascade do |t|
@@ -43,8 +58,14 @@ ActiveRecord::Schema.define(version: 2023_12_07_083004) do
     t.integer "unit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "task_id", null: false
+    t.index ["task_id"], name: "index_working_processes_on_task_id"
     t.index ["type_of_task_id"], name: "index_working_processes_on_type_of_task_id"
   end
 
+  add_foreign_key "tasks", "clients"
+  add_foreign_key "tasks", "users"
+  add_foreign_key "tasks", "working_processes"
+  add_foreign_key "working_processes", "tasks"
   add_foreign_key "working_processes", "type_of_tasks"
 end
