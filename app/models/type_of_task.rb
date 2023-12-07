@@ -1,0 +1,2 @@
+class TypeOfTask < ApplicationRecord
+end

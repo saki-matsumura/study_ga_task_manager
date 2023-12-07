@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  memo: MyText
+  deadline_on: 2023-12-07
+  done: false
+  client: one
+  working_process: one
+  user: one
+
+two:
+  title: MyString
+  memo: MyText
+  deadline_on: 2023-12-07
+  done: false
+  client: two
+  working_process: two
+  user: two
