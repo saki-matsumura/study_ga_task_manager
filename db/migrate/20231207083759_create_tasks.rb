@@ -2,7 +2,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
   def change
     create_table :tasks do |t|
       t.string :title
-      t.text :memo
+      t.text :note
       t.date :deadline_on
       t.boolean :done, default: false
       t.references :client, null: false, foreign_key: true

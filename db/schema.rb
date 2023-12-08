@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2023_12_07_085234) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title"
-    t.text "memo"
+    t.text "note"
     t.date "deadline_on"
     t.boolean "done", default: false
     t.bigint "client_id", null: false
