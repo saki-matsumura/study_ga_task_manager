@@ -58,14 +58,11 @@ ActiveRecord::Schema.define(version: 2023_12_07_085234) do
     t.integer "unit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "task_id", null: false
-    t.index ["task_id"], name: "index_working_processes_on_task_id"
     t.index ["type_of_task_id"], name: "index_working_processes_on_type_of_task_id"
   end
 
   add_foreign_key "tasks", "clients"
   add_foreign_key "tasks", "users"
   add_foreign_key "tasks", "working_processes"
-  add_foreign_key "working_processes", "tasks"
   add_foreign_key "working_processes", "type_of_tasks"
 end
