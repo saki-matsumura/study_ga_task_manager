@@ -11,6 +11,11 @@ module TaskManager
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # タイムゾーン設定
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+
+    # 不要なファイルを作らない設定
     config.generators do |g|
       g.assets false
       g.helper false

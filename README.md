@@ -8,6 +8,11 @@
 | gem名 | 用途 |
 ----|----
 | pry-rails | デバッグ用 |
+| carrierwave | 画像アップ |
+| mini_magick | 画像サイズ変更 |
+| faker | フェイカー |
+| enum_help | enum |
+
 
 ## アプリケーションに取り入れる技術を就業Termで学んだ技術
 - Ajaxを使ったコメント機能

@@ -1,1 +1,9 @@
 <h1>タスク詳細</h1>
+<p><%= @task.done %></p>
+<p><%= @task.title %></p>
+<p><%= @task.note %></p>
+<p><%= @task.deadline_on %></p>
+
+<p>
+<%= link_to "編集", edit_task_path %> | <%= link_to "戻る", tasks_path %>
+</p>

@@ -16,6 +16,7 @@ gem 'bcrypt' # パスワード
 gem "carrierwave" # 画像アップ用
 gem "mini_magick" # 画像サイズ変更用
 gem "faker"  # フェイカー
+gem 'enum_help' # enum
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
