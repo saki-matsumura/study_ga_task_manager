@@ -1,6 +1,9 @@
 class Task < ApplicationRecord
   # clientとworking_processはnilでもOK
   belongs_to :client, optional: true
+  accepts_nested_attributes_for :client,
+    reject_if: :all_blank
+
   belongs_to :user
 
   # タスクが削除されたら、付随する工程も削除する
@@ -9,6 +12,6 @@ class Task < ApplicationRecord
     allow_destroy: true,
     reject_if: :all_blank
 
-  validates :title, presence: true
-  validates :note, length: { maximum: 140 }
+  # validates :title, presence: true
+  # validates :note, length: { maximum: 140 }
 end

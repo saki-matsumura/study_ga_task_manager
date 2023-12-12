@@ -1,9 +1,9 @@
-<%= form_with(model: @task, local: true, url: choose_new_or_edit) do |form| %>
-  <% if @task.errors.any? %>
+<%= form_with(model: @task_form.task, local: true, url: choose_new_or_edit) do |form| %>
+  <% if @task_form.task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @task.errors.count %>件のエラーがあります。</h2>
+      <h2><%= @task_form.task.errors.count %>件のエラーがあります。</h2>
       <ul>
-      <% @task.errors.full_messages.each do |msg| %>
+      <% @task_form.task.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -25,6 +25,15 @@
   <p><b><%= form.label :deadline_on %>：</b>
   <%= form.date_field :deadline_on %>
   </p>
+
+  <%# クライアント %>
+  <%= form.fields_for :clients do | clients_form | %>
+    <p>
+    <b><%= clients_form.label :name %>：</b>
+    <%= clients_form.text_field :name %>
+    </p>
+      <%# binding.pry %>
+  <% end %>
 
   <%= form.submit %>
 <% end %>

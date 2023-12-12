@@ -8,19 +8,19 @@ class TasksController < ApplicationController
 
   def new
     if params[:back]
-      @task = current_user.tasks.build(task_params)
+      @task_form = TaskForm.new(current_user, Task.new, Client.new, task_params)
     else
-      @task = current_user.tasks.build
+      @task_form = TaskForm.new(current_user, Task.new, Client.new)
     end
   end
   
   def create
-    @task = current_user.tasks.build(task_params)
+    @task_form = TaskForm.new(current_user, Task.new, Client.new, task_params)
     if params[:back]
       render :new
     else
-      if @task.save
-        redirect_to task_path(@task), notice: "タスクを作成しました"
+      if @task_form.save
+        redirect_to task_path(@task_form.task), notice: "タスクを作成しました"
       else
         render :new
       end
@@ -34,8 +34,8 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params)
-      redirect_to task_path(@task), notice: "タスクを編集しました"
+    if @task_form.update(current_user, @task.client, @task, task_params)
+      redirect_to task_path(@task_form.task), notice: "タスクを編集しました"
     else
       render :edit
     end
@@ -48,8 +48,19 @@ class TasksController < ApplicationController
 
   private
 
+
   def task_params
-    params.require(:task).permit(:title, :note, :deadline_on, :done, :client_id
+    params.require(:task).permit(:title, :note, :deadline_on, :done, :client_id,
+      clients: [:name],
+      type_of_tasks: [:name],
+      working_processes: [
+        :type_of_task_id, 
+        :workload, 
+        :working_hour, 
+        :unit,
+        :_destroy
+      ]
+
     # ,
     #                               clients_attributes: [
     #                                 :id,
@@ -70,13 +81,18 @@ class TasksController < ApplicationController
                                   )
   end
 
+  def client_params
+    params.require(:clients).permit(:name)
+  end
+
   def set_task
     @task = Task.find(params[:id])
   end
 
   def back_to_index
     # 自分以外のユーザーが編集・削除しようとするとタスク一覧画面に遷移
-     if current_user != @task.user
+    # binding.pry
+     if current_user != @task_form.user
       redirect_to tasks_path
      end
   end
