@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy] 
   before_action :back_to_index, only: [:edit, :update, :destroy]
 
   def index
@@ -8,14 +8,14 @@ class TasksController < ApplicationController
 
   def new
     if params[:back]
-      @task_form = TaskForm.new(current_user, Task.new, Client.new, task_params)
+    set_task_form
     else
-      @task_form = TaskForm.new(current_user, Task.new, Client.new)
+      @task_form = TaskForm.new(current_user)
     end
   end
   
   def create
-    @task_form = TaskForm.new(current_user, Task.new, Client.new, task_params)
+    set_task_form
     if params[:back]
       render :new
     else
@@ -28,15 +28,22 @@ class TasksController < ApplicationController
   end
 
   def show
+    @working_processes = WorkingProcess.where('task_id = ?', @task.id)
   end
 
   def edit
+    @task_form = TaskForm.new(current_user)
+    task_form_params
   end
 
   def update
-    if @task_form.update(current_user, @task.client, @task, task_params)
-      redirect_to task_path(@task_form.task), notice: "タスクを編集しました"
+    set_task_form
+    task_form_params
+    
+    if @task_form.update(current_user, task_params)
+      redirect_to task_path(@task), notice: "タスクを編集しました"
     else
+      binding.pry
       render :edit
     end
   end
@@ -48,53 +55,47 @@ class TasksController < ApplicationController
 
   private
 
+  def set_task_form
+    @task_form = TaskForm.new(current_user, task_params)
+  end
 
   def task_params
     params.require(:task).permit(:title, :note, :deadline_on, :done, :client_id,
-      clients: [:name],
-      type_of_tasks: [:name],
-      working_processes: [
+      clients: [
+        :id,
+        :name],
+      type_of_tasks: [
+        :id,
+        :name],
+      working_process: [
         :type_of_task_id, 
         :workload, 
         :working_hour, 
         :unit,
+        :task_id,
         :_destroy
-      ]
-
-    # ,
-    #                               clients_attributes: [
-    #                                 :id,
-    #                                 :name
-    #                               ],
-    #                               type_of_tasks_attributes: [
-    #                                 :id, 
-    #                                 :name
-    #                               ],
-    #                               working_processes_attributes: [
-    #                                 :id,
-    #                                 :type_of_task_id, 
-    #                                 :workload, 
-    #                                 :working_hour, 
-    #                                 :unit,
-    #                                 :_destroy
-    #                               ]
-                                  )
-  end
-
-  def client_params
-    params.require(:clients).permit(:name)
+      ])
   end
 
   def set_task
     @task = Task.find(params[:id])
   end
 
+  def task_form_params
+    @task_form.task = @task
+    @task_form.client = @task.client
+    @working_processes = WorkingProcess.where('task_id = ?', @task.id)
+    unless @working_processes.count.zero?
+      @task_form.type_of_task = @working_processes.first.type_of_task
+      # 複数登録できるように変更予定
+      @task_form.working_process = @working_processes.first
+    end
+  end
+
   def back_to_index
     # 自分以外のユーザーが編集・削除しようとするとタスク一覧画面に遷移
-    # binding.pry
-     if current_user != @task_form.user
+     if current_user != @task.user
       redirect_to tasks_path
      end
   end
-
 end

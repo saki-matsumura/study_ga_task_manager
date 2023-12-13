@@ -26,14 +26,50 @@
   <%= form.date_field :deadline_on %>
   </p>
 
-  <%# クライアント %>
-  <%= form.fields_for :clients do | clients_form | %>
-    <p>
-    <b><%= clients_form.label :name %>：</b>
-    <%= clients_form.text_field :name %>
-    </p>
-      <%# binding.pry %>
-  <% end %>
+  <%if @task_form.task.id %>
+    <%# ----- 編集 ----- %>
+    <%# クライアント %>
+      <p><b>取引先：</b><%= text_field_tag 'task[clients][name]',  @task_form.client.name %></p>
 
+    <%# 工程名 %>
+      <p><b>工程名：</b><%= text_field_tag 'task[type_of_tasks][name]',  @task_form.type_of_task.name %></p>
+
+    <%# 工程の詳細 %>
+      <p><b>作業量：</b><%= number_field_tag 'task[working_process][workload]',  @task_form.working_process.workload %></p>
+      <p><b>作業時間：</b><%= number_field_tag 'task[working_process][working_hour]',  @task_form.working_process.working_hour %>
+      <%= select_tag 'task[working_process][unit]',  options_for_select(WorkingProcess.units_i18n.invert, @task_form.working_process.unit) %></p>
+
+  <%else%>
+    <%# ----- 新規 ----- %>
+    <%# クライアント %>
+    <%= form.fields_for :clients do | clients_form | %>
+      <p>
+        <b><%= clients_form.label :取引先 %>：</b>
+        <%= clients_form.text_field :name %>
+      </p>
+    <% end %>
+    <%# 工程名 %>
+    <%= form.fields_for :type_of_tasks do | type_of_tasks_form | %>
+      <p>
+      <b><%= type_of_tasks_form.label :工程名 %>：</b>
+      <%= type_of_tasks_form.text_field :name %>
+      </p>
+    <% end %>
+
+    <%# 工程の詳細 %>
+    <%= form.fields_for :working_process do | working_processes_form | %>
+      <p>
+      <b><%= working_processes_form.label :workload %>：</b>
+      <%= working_processes_form.number_field :workload %>
+      </p>
+
+      <p>
+      <b><%= working_processes_form.label :working_hour %>：</b>
+      <%= working_processes_form.number_field :working_hour %>
+      <%= working_processes_form.select(:unit, WorkingProcess.units_i18n.invert, {}, include_blank: true) %> 
+      </p>
+    <% end %>
+
+  <%end%>
   <%= form.submit %>
 <% end %>

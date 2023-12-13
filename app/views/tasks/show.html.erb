@@ -1,9 +1,15 @@
 <h1>タスク詳細</h1>
-<p><%= @task.done %></p>
-<p><%= @task.title %></p>
-<p><%= @task.note %></p>
-<p><%= @task.deadline_on %></p>
-<p><%= @task.client.name %></p>
+<p>完了チェック：<%= @task.done %></p>
+<p>タイトル：<%= @task.title %></p>
+<p>メモ：<%= @task.note %></p>
+<p>納期：<%= @task.deadline_on %></p>
+<%#binding.pry%>
+<p>取引先：<%= @task.client&.name %></p>
+<% @working_processes.each do |process| %>
+  <p>工程：<%= process.type_of_task&.name %></p>
+  <p>作業量：<%= process.workload %></p>
+  <p>作業時間：<%= process.working_hour %><%= process.unit %></p>
+<% end %>
 
 <p>
 <%= link_to "編集", edit_task_path %> | <%= link_to "戻る", tasks_path %>

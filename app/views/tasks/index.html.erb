@@ -4,6 +4,9 @@
 
 <ul>
   <% @tasks.each do | task | %>
-    <li><%= link_to task.title, task_path(task.id), class: "btn btn-outline-primary" %></li>
+    <li>
+      <%= link_to task.title, task_path(task.id), class: "btn btn-outline-primary" %>
+      <%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当に削除してよろしですか？'}, class: "btn btn-outline-danger" %>
+    </li>
   <% end %>
 </ul>
