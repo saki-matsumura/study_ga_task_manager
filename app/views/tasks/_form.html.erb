@@ -9,8 +9,22 @@
       </ul>
     </div>
   <% end %>
+
+  <%# カメラ起動 %>
+  <%= javascript_pack_tag 'tasks/_form' %>
+  <dl>
+  <dt>写真</dt>
+  <dd>
+    <div>
+    <label><span>背面カメラ</span>
+    <%# <input type="file" capture="environment" accept="image/*" name="task[image]" id="task_image"></label> %>
+    </div>
+  </dd>
+  </dl>
+
   <%= form.label :image %>
-  <%= form.file_field :image %>
+  <%#= form.file_field :image %>
+  <%= form.file_field :image, capture: "environment", accept: "image/*" %>
 
   <p><b><%= form.label :title %></b><br>
   <%= form.text_field :title %><br>

@@ -37,10 +37,12 @@ class TaskForm
 
   def set_params(params)
     # パラメータをモデルごとに切り分け
+    # binding.pry
     @client_params = params.delete("clients") #paramsからclient関係だけ抜き出す
     @type_of_task_params = params.delete("type_of_tasks")
     @working_process_params = params.delete("working_process")
     @task_params = params
+    
   end
 
   # クライアント名が存在するか確認
@@ -71,9 +73,13 @@ class TaskForm
   end
 
   def save
+    # return if invalid?
+
     client_incrude?(@client_params[:name])  # クライアント名が存在するか確認
     type_of_task_incrude?(@type_of_task_params[:name]) # 工程名が存在するか確認
+    
     @task.assign_attributes(@task_params)
+    
     @task.save
 
     if @working_process.type_of_task 
