@@ -18,6 +18,11 @@ gem "mini_magick" # 画像サイズ変更用
 gem "faker"  # フェイカー
 gem 'enum_help' # enum
 
+# heroku
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "pry-rails"  # デバッグ用
