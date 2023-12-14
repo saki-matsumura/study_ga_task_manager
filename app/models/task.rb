@@ -17,4 +17,7 @@ class Task < ApplicationRecord
 
   # 画像
   mount_uploader :image, ImageUploader
+
+  # ソート
+  scope :default, -> { order(created_at: :desc) }
 end

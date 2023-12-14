@@ -1,5 +1,5 @@
 $(function(){
-  $fileField = $('#file-input')
+  $fileField = $('#task_image')
 
   $($fileField).on('change', $fileField, function(e) {
     file = e.target.files[0]
@@ -13,7 +13,7 @@ $(function(){
           src: e.target.result,
           width: "100%",
           class: "preview",
-          title: file.name
+          title: file.name,
         }));
       };
     })(file);

@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :back_to_index, only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.default
   end
 
   def new
