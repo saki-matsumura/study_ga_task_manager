@@ -11,7 +11,10 @@ class Task < ApplicationRecord
   accepts_nested_attributes_for :working_processes,
     allow_destroy: true,
     reject_if: :all_blank
+  
+  validates :title, presence: true
+  validates :note, length: { maximum: 140 }
 
-  # validates :title, presence: true
-  # validates :note, length: { maximum: 140 }
+  # 画像
+  mount_uploader :image, ImageUploader
 end

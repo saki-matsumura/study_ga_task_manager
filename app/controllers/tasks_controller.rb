@@ -8,7 +8,7 @@ class TasksController < ApplicationController
 
   def new
     if params[:back]
-    set_task_form
+      set_task_form
     else
       @task_form = TaskForm.new(current_user)
     end
@@ -39,16 +39,18 @@ class TasksController < ApplicationController
   def update
     set_task_form
     task_form_params
-    
     if @task_form.update(current_user, task_params)
       redirect_to task_path(@task), notice: "タスクを編集しました"
     else
-      binding.pry
       render :edit
     end
   end
 
   def destroy
+    @working_processes = WorkingProcess.where('task_id = ?', @task.id)
+    @working_processes.each do | working_process |
+      working_process.destroy
+    end
     @task.destroy
     redirect_to tasks_path, notice: "タスクを削除しました"
   end
@@ -60,7 +62,14 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :note, :deadline_on, :done, :client_id,
+    params.require(:task).permit(
+      :title, 
+      :note, 
+      :deadline_on, 
+      :done, 
+      :client_id, 
+      :image, 
+      :image_cache,
       clients: [
         :id,
         :name],

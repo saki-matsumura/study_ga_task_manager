@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2023_12_11_064256) do
     t.text "note"
     t.date "deadline_on"
     t.boolean "done", default: false
+    t.string "image"
     t.bigint "client_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

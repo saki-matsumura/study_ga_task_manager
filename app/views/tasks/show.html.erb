@@ -11,6 +11,11 @@
   <p>作業時間：<%= process.working_hour %><%= process.unit %></p>
 <% end %>
 
+<% if @task.image.url %>
+<p><%= @task.image.url %></p>
+<p><%= image_tag @task.image.url, class: 'image_size_default' %></p>
+<% end %>
+
 <p>
 <%= link_to "編集", edit_task_path %> | <%= link_to "戻る", tasks_path %>
 </p>
