@@ -18,6 +18,9 @@ gem "mini_magick" # 画像サイズ変更用
 gem "faker"  # フェイカー
 gem 'enum_help' # enum
 
+gem 'google-cloud-vision' # クラウドビジョンAPI
+gem 'dotenv-rails' # envファイル
+
 # heroku
 gem 'net-smtp'
 gem 'net-imap'

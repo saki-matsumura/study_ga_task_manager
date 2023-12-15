@@ -10,9 +10,8 @@
     </div>
   <% end %>
 
-  <%# カメラ起動 %>
+  <%# 画像認証機能 %>
   <%= javascript_pack_tag 'tasks/_form' %>
-
   <%= form.label :image %>
   <%= form.file_field :image, capture: "environment", accept: "image/*", class: "image_size_default" %>
   <div id="img_field">
