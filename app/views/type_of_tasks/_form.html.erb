@@ -1,0 +1,21 @@
+<%= form_with(model: @type_of_task, local: true) do |form| %>
+
+<% if @type_of_task.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @type_of_task.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @type_of_task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div >
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "一覧に戻る", type_of_tasks_path, class: "btn_back btn btn-info" %>
