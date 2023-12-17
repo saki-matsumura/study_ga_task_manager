@@ -33,6 +33,8 @@ class ClientsController < ApplicationController
   end
 
   def destroy
+    @client.destroy
+    redirect_to clients_path, notice: "取引先を削除しました"
   end
 
   private
