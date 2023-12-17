@@ -17,14 +17,17 @@
     </div>
     <div class = "login text-right col-sm mt-3">
     <h3><%= link_to "Home", tasks_path %></h3>
+    <div class = "menu">
+      <%= link_to "clients", clients_path %>｜
+    </div>
       <%# ログインしていいるか否かで表示を変える %>
     <% if logged_in? %>
       <%# ログインしている時：プロフィールとログアウトボタン表示 %>
-      <%= link_to "Profile", user_path(current_user.id), class: "btn btn-outline-secondary"%>
+      <%= link_to "Profile", user_path(current_user.id), class: "btn btn-outline-secondary"%>｜
       <%= link_to "Logout", session_path(current_user.id), method: :delete, class: "btn btn-outline-danger" %>
     <% else %>
       <%# ログアウトしている時：サインアップとログインボタン表示 %>
-      <%= link_to "Sign up", new_user_path, class: "btn btn-outline-primary"%>
+      <%= link_to "Sign up", new_user_path, class: "btn btn-outline-primary"%>｜
       <%= link_to "Log in", new_session_path, class: "btn btn-outline-primary"%>
     <% end %>
     </div>

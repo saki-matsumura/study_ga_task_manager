@@ -1,6 +1,6 @@
 class Client < ApplicationRecord
   has_many :tasks
-  # accepts_nested_attributes_for :tasks
 
   validates :name, uniqueness: true
+  validates :name, presence: true
 end

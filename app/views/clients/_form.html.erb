@@ -1,0 +1,21 @@
+<%= form_with(model: @client, local: true) do |form| %>
+
+<% if @client.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @client.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div >
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+</div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "ホームに戻る", clients_path, class: "btn_back btn btn-info" %>
