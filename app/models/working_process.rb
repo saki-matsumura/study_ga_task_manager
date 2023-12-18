@@ -6,4 +6,14 @@ class WorkingProcess < ApplicationRecord
     day: 0,
     hour: 1
   }
+
+  private
+
+  def check_and_save
+    return false unless type_of_task_id_blank?
+  end
+
+  def type_of_task_id_blank?
+    !self.type_of_task_id.blank?
+  end
 end

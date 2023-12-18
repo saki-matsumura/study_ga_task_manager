@@ -41,15 +41,15 @@
   <%if @task_form.task.id %>
     <%# ----- 編集 ----- %>
     <%# クライアント %>
-      <p><b>取引先：</b><%= text_field_tag 'task[clients][name]',  @task_form.client.name %></p>
+      <p><b>取引先：</b><%= text_field_tag 'task[clients][name]',  @task_form.client&.name %></p>
 
     <%# 工程名 %>
-      <p><b>工程名：</b><%= text_field_tag 'task[type_of_tasks][name]',  @task_form.type_of_task.name %></p>
+      <p><b>工程名：</b><%= text_field_tag 'task[type_of_tasks][name]',  @task_form.type_of_task&.name %></p>
 
     <%# 工程の詳細 %>
-      <p><b>作業量：</b><%= number_field_tag 'task[working_process][workload]',  @task_form.working_process.workload %></p>
-      <p><b>作業時間：</b><%= number_field_tag 'task[working_process][working_hour]',  @task_form.working_process.working_hour %>
-      <%= select_tag 'task[working_process][unit]',  options_for_select(WorkingProcess.units_i18n.invert, @task_form.working_process.unit) %></p>
+      <p><b>作業量：</b><%= number_field_tag 'task[working_process][workload]',  @task_form.working_process&.workload %></p>
+      <p><b>作業時間：</b><%= number_field_tag 'task[working_process][working_hour]',  @task_form.working_process&.working_hour %>
+      <%= select_tag 'task[working_process][unit]',  options_for_select(WorkingProcess.units_i18n.invert, @task_form.working_process&.unit) %></p>
 
   <%else%>
     <%# ----- 新規 ----- %>

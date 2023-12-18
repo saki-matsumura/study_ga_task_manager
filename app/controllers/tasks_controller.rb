@@ -16,14 +16,13 @@ class TasksController < ApplicationController
   
   def create
     set_task_form
-    if params[:back]
-      render :new
+    # binding.pry
+    if @task_form.save
+      # binding.pry
+      redirect_to task_path(@task_form.task), notice: "タスクを作成しました"
     else
-      if @task_form.save
-        redirect_to task_path(@task_form.task), notice: "タスクを作成しました"
-      else
-        render :new
-      end
+      # binding.pry
+      render :new
     end
   end
 
@@ -39,6 +38,7 @@ class TasksController < ApplicationController
   def update
     set_task_form
     task_form_params
+    binding.pry
     if @task_form.update(current_user, task_params)
       redirect_to task_path(@task), notice: "タスクを編集しました"
     else
