@@ -31,7 +31,7 @@ class TaskForm
   def initialize(user, params = {})
     @user = user
     @task = Task.new
-    binding.pry
+    # binding.pry
     @client = Client.new
     @type_of_task = TypeOfTask.new
     @working_process = WorkingProcess.new
@@ -59,6 +59,7 @@ class TaskForm
     @task_params = params_copy
 
     # 各インスタンスにパラメータを設定
+    @client = Client.new unless @client
     @client.assign_attributes(@client_params)
     @type_of_task.assign_attributes(@type_of_task_params)
     @working_process.assign_attributes(@working_process_params)
@@ -103,13 +104,13 @@ class TaskForm
   end
 
   def update(user, params = {})
-    binding.pry
     @user = user
     set_params(params)
 
     if @client.name
       client_incrude?(@client.name)  # クライアント名が存在するか確認
       @client.update(@client_params) 
+      @task.client_id = nil if @client.name == ""
     end
 
     if @type_of_task
@@ -121,6 +122,8 @@ class TaskForm
     if @working_process
       @working_process_params["task_id"] = @task.id
       @working_process.update(@working_process_params)
+      # 工程名が空欄であれば、削除する
+      @working_process.destroy if @working_process.type_of_task.name == ""
     end
     @task.valid?
   end
