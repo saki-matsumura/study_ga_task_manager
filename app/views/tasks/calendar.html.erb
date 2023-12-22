@@ -1,0 +1,15 @@
+<h1>タスクカレンダー</h1>
+
+<%= link_to "お気に入り", tasks_path(bookmarks: "true") %>
+<%= link_to '新規作成', new_task_path %>
+
+<div class="col-md-8">
+<%= month_calendar events: @tasks do |date, tasks| %>
+  <%= date.day %>
+
+  <% tasks.each do |task| %>
+    <div>
+      <%= link_to task.title, task %>
+    </div>
+  <% end %>
+<% end %>

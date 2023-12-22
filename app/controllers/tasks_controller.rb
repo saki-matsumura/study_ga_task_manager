@@ -11,6 +11,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def calendar
+     @tasks = Task.all
+  end
+
   def new
     if params[:back]
       set_task_form

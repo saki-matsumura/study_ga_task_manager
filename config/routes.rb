@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root "tasks#index"
-  resources :tasks
+  resources :tasks do
+    collection do
+      get 'calendar'
+    end
+  end
   resources :clients
   resources :type_of_tasks
   resources :image_authentications, only:[:create]
