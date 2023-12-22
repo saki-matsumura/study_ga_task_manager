@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_11_064256) do
+ActiveRecord::Schema.define(version: 2023_12_22_021515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_bookmarks_on_task_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -62,6 +71,8 @@ ActiveRecord::Schema.define(version: 2023_12_11_064256) do
     t.index ["type_of_task_id"], name: "index_working_processes_on_type_of_task_id"
   end
 
+  add_foreign_key "bookmarks", "tasks"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "tasks", "clients"
   add_foreign_key "tasks", "users"
   add_foreign_key "working_processes", "tasks"
