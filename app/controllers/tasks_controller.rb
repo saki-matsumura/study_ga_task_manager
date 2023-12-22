@@ -4,6 +4,11 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all.default
+
+    if params[:bookmarks]
+      bookmarks = Bookmark.where(user_id: current_user.id).pluck(:task_id)
+      @tasks = Task.find(bookmarks)
+    end
   end
 
   def new
@@ -25,6 +30,7 @@ class TasksController < ApplicationController
 
   def show
     @working_processes = WorkingProcess.where('task_id = ?', @task.id)
+    @bookmark = current_user.bookmarks.find_by(task_id: @task.id)
   end
 
   def edit

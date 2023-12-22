@@ -3,9 +3,9 @@ class Task < ApplicationRecord
   belongs_to :client, optional: true
   belongs_to :user
 
-  # タスクが削除されたら、付随する工程も削除する
-  has_many :working_processes, dependent: :destroy
-  
+  has_many :working_processes, dependent: :destroy  # タスクが削除されたら、付随する工程も削除する
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_users, through: :bookmarks, source: :user
   validates :title, presence: true
   validates :note, length: { maximum: 140 }
 
@@ -14,4 +14,7 @@ class Task < ApplicationRecord
 
   # ソート
   scope :default, -> { order(created_at: :desc) }
+
+  # フィルター
+
 end
