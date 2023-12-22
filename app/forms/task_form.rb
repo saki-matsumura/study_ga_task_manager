@@ -123,7 +123,8 @@ class TaskForm
       @working_process_params["task_id"] = @task.id
       @working_process.update(@working_process_params)
       # 工程名が空欄であれば、削除する
-      @working_process.destroy if @working_process.type_of_task.name == ""
+      # binding.pry
+      # @working_process.destroy if @working_process.type_of_task.name == "" && @working_process.type_of_task.name != nil
     end
     @task.valid?
   end

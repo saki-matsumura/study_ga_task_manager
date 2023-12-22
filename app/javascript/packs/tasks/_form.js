@@ -28,8 +28,9 @@ $(function(){
           contentType: false
         }).done(function(data) {
           //成功したら、ImageAuthenticationsコントローラーから送られてきた値を入力する
-          debugger
-          $('#task_note').val(data.task_note)
+          $('#task_title').val(data.task_title)
+          $('#task_clients_name').val(data.task_client)
+          $('#task_type_of_tasks_name').val(data.task_type_of_task)
         }).fail(function(data) {
           //エラー時の処理
         });
