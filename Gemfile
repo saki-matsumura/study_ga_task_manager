@@ -21,6 +21,8 @@ gem 'enum_help' # enum
 gem 'google-cloud-vision' # クラウドビジョンAPI
 gem 'dotenv-rails' # envファイル
 
+gem 'simple_calendar', '~> 2.0' # シンプルカレンダー
+
 # heroku
 gem 'net-smtp'
 gem 'net-imap'

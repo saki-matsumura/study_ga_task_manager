@@ -3,7 +3,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
     create_table :tasks do |t|
       t.string :title
       t.text :note
-      t.date :deadline_on
+      t.date :deadline_on, default: -> { '(CURRENT_DATE)' }
       t.boolean :done, default: false
       t.string :image
       t.references :client, null: true, foreign_key: true

@@ -17,4 +17,9 @@ class Task < ApplicationRecord
 
   # フィルター
 
+
+  # シンプルカレンダー
+  def start_time
+    self.deadline_on #simple_calendarに表示させる日付のカラムを指定
+  end
 end

@@ -6,6 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -15,12 +17,14 @@
   <body>
     <%# 仮配置 %>
     </div>
-    <div class = "login text-right col-sm mt-3">
-    <h3><%= link_to "Home", tasks_path %></h3>
-    <div class = "menu">
-      <%= link_to "clients", clients_path %>｜
-      <%= link_to "type_of_tasks", type_of_tasks_path %>
+    <div class = "login text-left col-sm mt-3">
+      <h3><%= link_to "Home", tasks_path %></h3>
+      <div class = "menu">
+        <%= link_to "clients", clients_path %>｜
+        <%= link_to "type_of_tasks", type_of_tasks_path %>
+      </div>
     </div>
+    <div class = "login text-right col-sm mt-3">
       <%# ログインしていいるか否かで表示を変える %>
     <% if logged_in? %>
       <%# ログインしている時：プロフィールとログアウトボタン表示 %>

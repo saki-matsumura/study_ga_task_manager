@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2023_12_22_021515) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "note"
-    t.date "deadline_on"
+    t.date "deadline_on", default: -> { "CURRENT_DATE" }
     t.boolean "done", default: false
     t.string "image"
     t.bigint "client_id"
