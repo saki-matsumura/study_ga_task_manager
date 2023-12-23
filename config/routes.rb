@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "tasks#index"
+  root "tasks#calendar"
   resources :tasks do
     collection do
       get 'calendar'
