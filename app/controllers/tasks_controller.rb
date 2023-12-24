@@ -15,6 +15,11 @@ class TasksController < ApplicationController
      @tasks = Task.all
   end
 
+  def bookmark
+    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:task_id)
+    @tasks = Task.find(bookmarks)
+  end
+
   def new
     if params[:back]
       set_task_form
@@ -113,4 +118,10 @@ class TasksController < ApplicationController
       redirect_to tasks_path
      end
   end
+
+  # def bookmark_check(task)
+  #   @bookmark = current_user.bookmarks.find_by(task_id: task.id)
+  #   if Bookmark.find_by('task_id = ?', task.id).find_by('user_id = ?', current_user.id)
+  # end
+
 end

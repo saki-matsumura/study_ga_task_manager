@@ -22,6 +22,7 @@ gem 'google-cloud-vision' # クラウドビジョンAPI
 gem 'dotenv-rails' # envファイル
 
 gem 'simple_calendar', '~> 2.0' # シンプルカレンダー
+gem 'font-awesome-rails' # font-awesome
 
 # heroku
 gem 'net-smtp'

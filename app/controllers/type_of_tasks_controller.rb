@@ -34,7 +34,7 @@ class TypeOfTasksController < ApplicationController
 
   def destroy
     @type_of_task.destroy
-    redirect_to tasks_path, notice: "工程を削除しました"
+    redirect_to tasks_path, notice: "作業工程を削除しました"
   end
 
   private

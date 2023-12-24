@@ -106,6 +106,8 @@ GEM
     faraday-retry (2.2.0)
       faraday (~> 2.0)
     ffi (1.16.3)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     gapic-common (0.21.1)
       faraday (>= 1.9, < 3.a)
       faraday-retry (>= 1.0, < 3.a)
@@ -323,6 +325,7 @@ DEPENDENCIES
   dotenv-rails
   enum_help
   faker
+  font-awesome-rails
   google-cloud-vision
   jbuilder (~> 2.7)
   listen (~> 3.3)
