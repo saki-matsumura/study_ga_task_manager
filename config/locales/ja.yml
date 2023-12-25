@@ -24,6 +24,7 @@ ja:
         name: 名前
         email: メール
         password: パスワード
+        password_confirmation: パスワード再入力
         icon: アイコン
     errors:
       messages:

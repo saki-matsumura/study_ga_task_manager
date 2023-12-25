@@ -10,10 +10,10 @@
     </div>
   <% end %>
 
-  <div class="icon_size_default">
+  <p><div class="icon_size_default">
   <%= image_tag default_img(@user.icon&.url)%>
   </div>
-  <%= f.file_field :icon %>
+  <%= f.file_field :icon %></p>
 
   <p><b><%= f.label :name %>：</b>
   <%= f.text_field :name %></p>
@@ -27,5 +27,5 @@
   <p><b><%= f.label :password_confirmation %>：</b>
   <%= f.password_field :password_confirmation %></p>
 
-  <%= f.submit %>
+  <%= f.submit "#{@submit_text}", class: "btn btn-primary" %>
 <% end %>

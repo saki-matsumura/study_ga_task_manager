@@ -1,5 +1,7 @@
-<%= link_to '<戻る', type_of_tasks_path %>
-<h1>工程 - 編集</h1>
+<%= link_to '<戻る', type_of_tasks_path, class: "browser_back" %>
+<div class="page_title">
+  <p>作業工程 - 編集</p>
+</div>
 
 <%= render 'form' %>
 <%= link_to '削除', type_of_task_path(@type_of_task.id), method: :delete ,data: { confirm: "タスクに登録されている工程も削除されます。\n本当に削除してよろしですか？"}, class: "btn btn-outline-danger" %>

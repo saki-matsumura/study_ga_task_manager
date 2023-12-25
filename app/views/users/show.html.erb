@@ -1,6 +1,8 @@
-<%= link_to '<戻る', calendar_tasks_path %>
+<%= link_to '<戻る', calendar_tasks_path, class: "browser_back" %>
+<div class="page_title">
+  <p>マイページ</p>
+</div>
 
-<h1>マイページ</h1>
 <p class="icon_size_default"><%= image_tag default_img(@user.icon&.url) %></p>
 <p><%= @user.name %></p>
 <p>メールアドレス: <%= @user.email %></p>

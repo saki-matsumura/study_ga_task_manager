@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def new
     return redirect_to tasks_path if logged_in?
     @user = User.new
+    @submit_text = "アカウント登録"
   end
 
   def create
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @submit_text = "保存"
   end
 
   def update

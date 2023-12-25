@@ -1,4 +1,7 @@
-<%= link_to '<戻る', redirect %>
+<%= link_to '<戻る', redirect, class: "browser_back" %>
+<div class="page_title">
+  <p>タスク - 詳細</p>
+</div>
 <%# お気に入り %>
 <p>
 <% if @bookmark.present? %>
@@ -17,7 +20,6 @@
     <% end %>
 <% end %>
 </p>
-<h1>タスク詳細</h1>
 <p>完了チェック：<%= @task.done %></p>
 <p>タイトル：<%= @task.title %></p>
 <p>メモ：<%= @task.note %></p>
@@ -36,5 +38,5 @@
 <% end %>
 
 <p>
-<%= link_to '編集', edit_task_path, class: "btn btn-primary" %>
+<%= link_to '編集', edit_task_path, class: "btn btn-outline-primary" %>
 </p>

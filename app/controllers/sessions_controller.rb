@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # ログイン成功
       session[:user_id] = user.id
-      redirect_to tasks_path
+      redirect_to calendar_tasks_path
     else
       # ログイン失敗
       flash.now[:danger] = 'ログインに失敗しました'
