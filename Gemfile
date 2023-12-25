@@ -22,7 +22,8 @@ gem 'google-cloud-vision' # クラウドビジョンAPI
 gem 'dotenv-rails' # envファイル
 
 gem 'simple_calendar', '~> 2.0' # シンプルカレンダー
-gem 'font-awesome-rails' # font-awesome
+
+gem 'rexml' # rspec
 
 # heroku
 gem 'net-smtp'
@@ -32,13 +33,20 @@ gem 'net-pop'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "pry-rails"  # デバッグ用
+
+  # rspec
+  gem 'spring'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
+  gem 'launchy'
 end
 
 group :development do
   gem 'web-console', '>= 4.1.0'
   # gem 'rack-mini-profiler', '~> 2.0' # 右上の表示を消す
   gem 'listen', '~> 3.3'
-  gem 'spring'
+  # gem 'spring'
 end
 
 group :test do

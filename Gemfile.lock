@@ -89,6 +89,7 @@ GEM
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.4)
+    diff-lcs (1.5.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -96,6 +97,11 @@ GEM
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erubi (1.12.0)
+    factory_bot (6.4.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.0)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     faker (3.2.2)
       i18n (>= 1.8.11, < 2)
     faraday (2.7.12)
@@ -106,8 +112,6 @@ GEM
     faraday-retry (2.2.0)
       faraday (~> 2.0)
     ffi (1.16.3)
-    font-awesome-rails (4.7.0.8)
-      railties (>= 3.2, < 8.0)
     gapic-common (0.21.1)
       faraday (>= 1.9, < 3.a)
       faraday-retry (>= 1.0, < 3.a)
@@ -164,6 +168,8 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jwt (2.7.1)
+    launchy (2.5.2)
+      addressable (~> 2.8)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -247,6 +253,23 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.8.3)
     rexml (3.2.6)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.3)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.1)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
@@ -274,6 +297,8 @@ GEM
     simple_calendar (2.4.3)
       rails (>= 3.0)
     spring (4.1.3)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -324,10 +349,11 @@ DEPENDENCIES
   carrierwave
   dotenv-rails
   enum_help
+  factory_bot_rails
   faker
-  font-awesome-rails
   google-cloud-vision
   jbuilder (~> 2.7)
+  launchy
   listen (~> 3.3)
   mini_magick
   net-imap
@@ -337,10 +363,13 @@ DEPENDENCIES
   pry-rails
   puma (~> 5.0)
   rails (~> 6.1.6)
+  rexml
+  rspec-rails
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   simple_calendar (~> 2.0)
   spring
+  spring-commands-rspec
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
