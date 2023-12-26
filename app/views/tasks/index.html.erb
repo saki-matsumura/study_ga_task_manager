@@ -9,8 +9,8 @@
 <ul>
   <% @tasks.each do | task | %>
     <li>
-      <%= task.title %>
-      <%= link_to '詳細', task_path(task.id) %>
+      <%= task.title %>｜
+      <%= link_to '詳細', task_path(task.id) %>｜
       <%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当に削除してよろしですか？'}, class: "text-danger" %>
     </li>
   <% end %>

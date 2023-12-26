@@ -10,7 +10,7 @@
     <li>
       <%= client.name %>｜
       <%= link_to '編集', edit_client_path(client.id) %>｜
-      <%= link_to '削除', client_path(client.id), method: :delete ,data: { confirm: "#{client.name}に関連するタスクも全て削除されます。\n本当に削除してよろしですか？"}, class: "btn btn-outline-danger" %>
+      <%= link_to '削除', client_path(client.id), method: :delete ,data: { confirm: "#{client.name}に関連するタスクも全て削除されます。\n本当に削除してよろしですか？"}, class: "text-danger" %>
     </li>
   <% end %>
 </ul>
