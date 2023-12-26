@@ -7,6 +7,9 @@
       <li><%= link_to "取引先", clients_path %></li>
       <li><%= link_to "ブックマーク", bookmark_tasks_path %></li>
       <li><%= link_to "タスク一覧", tasks_path %></li>
+      <% if current_user.admin? %>
+        <li><%= link_to "ユーザー一覧", admin_users_path %></li>
+      <% end %>
       <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "text-danger" %></li>
     </ul>
   </div>

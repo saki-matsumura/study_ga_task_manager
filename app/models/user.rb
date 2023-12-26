@@ -14,4 +14,9 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, on: :create
 
   mount_uploader :icon, ImageUploader
+
+  enum roll: {
+    general: 0,  # 一般
+    admin: 1,    # 管理者
+  }
 end
