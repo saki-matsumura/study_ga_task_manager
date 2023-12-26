@@ -19,7 +19,7 @@ user = User.first
 10.times do |n|
   title = "task_#{n}"
   Task.create!(title: title,
-               deadline_on: ""
+               deadline_on: "002023-12-1#{n}",
                user_id: user.id,
                )
 end
