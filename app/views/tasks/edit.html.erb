@@ -1,0 +1,7 @@
+<%= link_to '<戻る', :back, class: "browser_back" %>
+<div class="page_title">
+  <p>タスク - 編集</p>
+</div>
+
+<%= render 'form' %>
+<%= link_to '削除', task_path(@task.id), method: :delete ,data: { confirm: '本当に削除してよろしですか？'}, class: "btn btn-outline-danger" %>

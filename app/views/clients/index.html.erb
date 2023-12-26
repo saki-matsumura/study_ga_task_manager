@@ -1,0 +1,16 @@
+<%= link_to '<戻る', calendar_tasks_path, class: "browser_back" %>
+<div class="page_title">
+  <p>取引先 - 一覧</p>
+</div>
+
+<%= link_to '新規作成', new_client_path %>
+
+<ul>
+  <% @clients.each do | client | %>
+    <li>
+      <%= client.name %>｜
+      <%= link_to '編集', edit_client_path(client.id) %>｜
+      <%= link_to '削除', client_path(client.id), method: :delete ,data: { confirm: "#{client.name}に関連するタスクも全て削除されます。\n本当に削除してよろしですか？"}, class: "btn btn-outline-danger" %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,16 @@
+<%= link_to '<戻る', calendar_tasks_path, class: "browser_back" %>
+<div class="page_title">
+  <p>作業工程 - 一覧</p>
+</div>
+
+<%= link_to '新規作成', new_type_of_task_path %>
+
+<ul>
+  <% @type_of_tasks.each do | type_of_task | %>
+    <li>
+      <%= type_of_task.name %>｜
+      <%= link_to '編集', edit_type_of_task_path(type_of_task.id) %>｜
+      <%= link_to '削除', type_of_task_path(type_of_task.id), method: :delete ,data: { confirm: "タスクに登録されている工程も削除されます。\n本当に削除してよろしですか？"}, class: "btn btn-outline-danger" %>
+    </li>
+  <% end %>
+</ul>

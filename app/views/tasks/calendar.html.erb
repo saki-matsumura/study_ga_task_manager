@@ -1,0 +1,39 @@
+<!-- メニュー -->
+<div class="openbtn1"><span></span><span></span><span></span></div>
+<nav id="g-nav">
+  <div id="g-nav-list">
+    <ul>
+      <li><%= link_to "作業工程", type_of_tasks_path %></li>
+      <li><%= link_to "取引先", clients_path %></li>
+      <li><%= link_to "ブックマーク", bookmark_tasks_path %></li>
+      <li><%= link_to "タスク一覧", tasks_path %></li>
+      <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "text-danger" %></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page_title">
+  <p>カレンダー</p>
+</div>
+<br>
+<%= link_to '新規作成', new_task_path %><br>
+
+<div class="icon_size_mini user_icon">
+  <%= link_to image_tag(default_img(current_user.icon&.url)), user_path(current_user.id) %>
+</div>
+<br>
+
+<div class="col-md-8">
+<%= month_calendar events: @tasks do |date, tasks| %>
+  <%= date.day %>
+
+  <% tasks.each do |task| %>
+    <div>
+      <%= link_to task.title, task %>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+<%= javascript_pack_tag 'tasks/sidebar' %>

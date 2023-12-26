@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root "tasks#calendar"
+  resources :tasks do
+    collection do
+      get 'calendar'
+      get 'bookmark'
+    end
+  end
+  resources :clients, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :type_of_tasks, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :image_authentications, only:[:create]
+  resources :users, only: [:new, :create, :edit, :show, :update]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :bookmarks, only: [:create, :destroy]
 end

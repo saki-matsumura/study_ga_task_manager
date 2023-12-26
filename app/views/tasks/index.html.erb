@@ -1,0 +1,17 @@
+<%= link_to '<戻る', calendar_tasks_path, class: "browser_back" %>
+<div class="page_title">
+  <p>タスク - 一覧</p>
+</div>
+
+<%= link_to '新規作成', new_task_path %><br>
+<%= link_to 'お気に入りのみ表示', tasks_path(bookmarks: "true") %>
+
+<ul>
+  <% @tasks.each do | task | %>
+    <li>
+      <%= task.title %>
+      <%= link_to '詳細', task_path(task.id) %>
+      <%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当に削除してよろしですか？'}, class: "text-danger" %>
+    </li>
+  <% end %>
+</ul>

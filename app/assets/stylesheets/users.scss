@@ -1,0 +1,15 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// アイコンサイズ（デフォルト）
+.icon_size_default img{
+  border-radius:50%;
+  width: 200px;
+  height: 200px;
+}
+.icon_size_mini img{
+  border-radius:50%;
+  width: 30px;
+  height: 30px;
+}

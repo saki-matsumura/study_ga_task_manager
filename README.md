@@ -4,8 +4,21 @@
 - Ruby 3.0.1
 - Rails 6.1.7
 
+## 追加したgem
+| gem名 | 用途 | 教材に無いgem |
+----|----|----
+| pry-rails | デバッグ用 |  |
+| carrierwave | 画像アップ |  |
+| mini_magick | 画像サイズ変更 |  |
+| faker | フェイカー |  |
+| enum_help | enum |  |
+| google-cloud-vision | クラウドビジョンAPI | ○ |
+| dotenv-rails | envファイル|  |
+| simple_calendar | シンプルカレンダー | ○ |
+
+
 ## アプリケーションに取り入れる技術を就業Termで学んだ技術
-- Ajaxを使ったコメント機能
+- Ajaxを使用した機能
 - お気に入り機能
 
 ## カリキュラムで学んでいない技術

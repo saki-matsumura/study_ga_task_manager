@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+10.times do |n|
+  name = Faker::Games::Pokemon.name
+  email = Faker::Internet.email
+  password = "password"
+  User.create!(name: name,
+               email: email,
+               password: password,
+               )
+end
+
+user = User.first
+10.times do |n|
+  title = "task_#{n}"
+  Task.create!(title: title,
+               deadline_on: ""
+               user_id: user.id,
+               )
+end
+
+clients_name = ["〇〇株式会社", "〇〇社", "〇〇商事", "〇〇（株）", "有限会社〇〇"]
+clients_name.each do |client_name|
+  Client.create!(name: client_name)
+end
+
+type_of_tasks_name = ["上質紙", "A紙", "B紙", "地巻紙", "四つ切"]
+type_of_tasks_name.each do |type_name|
+  TypeOfTask.create!(name: type_name)
+end
