@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index]
   end
+  post 'users/guest_sign_in', to: 'sessions#guest_sign_in'
+  post 'users/guest_admin_sign_in', to: 'sessions#guest_admin_sign_in'
 end

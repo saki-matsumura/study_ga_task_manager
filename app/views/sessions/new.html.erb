@@ -13,4 +13,8 @@
   <br>
 <% end %>
 
+<%= link_to 'ゲストログイン（一般）', users_guest_sign_in_path, method: :post, class: "btn btn-outline-primary" %>
+<br><br>
+<%= link_to 'ゲストログイン（管理者）', users_guest_admin_sign_in_path, method: :post, class: "btn btn-outline-primary" %>
+<br><br>
 <p><%= link_to '新しいアカウントを作る', new_user_path, class: "text-primary"%></p>
