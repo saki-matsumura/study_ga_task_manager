@@ -118,10 +118,4 @@ class TasksController < ApplicationController
       redirect_to tasks_path
      end
   end
-
-  # def bookmark_check(task)
-  #   @bookmark = current_user.bookmarks.find_by(task_id: task.id)
-  #   if Bookmark.find_by('task_id = ?', task.id).find_by('user_id = ?', current_user.id)
-  # end
-
 end

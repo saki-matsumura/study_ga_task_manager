@@ -15,9 +15,6 @@ class Task < ApplicationRecord
   # ソート
   scope :default, -> { order(created_at: :desc) }
 
-  # フィルター
-
-
   # シンプルカレンダー
   def start_time
     self.deadline_on #simple_calendarに表示させる日付のカラムを指定

@@ -31,15 +31,12 @@ class TaskForm
   def initialize(user, params = {})
     @user = user
     @task = Task.new
-    # binding.pry
     @client = Client.new
     @type_of_task = TypeOfTask.new
     @working_process = WorkingProcess.new
-
     @task[:user_id] = @user.id
     
     set_params(params) if params != {}
-    # binding.pry
   end
 
   def set_params(params)
@@ -122,9 +119,6 @@ class TaskForm
     if @working_process
       @working_process_params["task_id"] = @task.id
       @working_process.update(@working_process_params)
-      # 工程名が空欄であれば、削除する
-      # binding.pry
-      # @working_process.destroy if @working_process.type_of_task.name == "" && @working_process.type_of_task.name != nil
     end
     @task.valid?
   end
