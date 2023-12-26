@@ -17,12 +17,13 @@
 | simple_calendar | シンプルカレンダー | ○ |
 
 
-## アプリケーションに取り入れる技術を就業Termで学んだ技術
+## アプリケーションに取り入れる技術（就業Termで学んだもの）
 - Ajaxを使用した機能
 - お気に入り機能
 
 ## カリキュラムで学んでいない技術
 - OCR（文字認識機能）
+- simple calendar（カレンダー表示）
 
 ## 要件定義書類のリンク
 https://docs.google.com/spreadsheets/d/18jhyQsGz94CrCGKcy9IL_FdGcn9Aipd7XTc8KqNtE3s/edit#gid=0
