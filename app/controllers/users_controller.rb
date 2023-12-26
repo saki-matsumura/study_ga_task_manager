@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :back_to_index, only: [:show, :edit, :update]
 
   def new
-    return redirect_to tasks_path if logged_in?
+    return redirect_to calendar_tasks_path if logged_in?
     @user = User.new
     @submit_text = "アカウント登録"
   end
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id   # ユーザー作成時にログイン
-      redirect_to tasks_path
+      redirect_to calendar_tasks_path
     else
       render :new
     end
