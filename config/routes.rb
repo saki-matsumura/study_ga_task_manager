@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :show, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookmarks, only: [:create, :destroy]
+  resources :instructions, only: [:index]
+  namespace :admin do
+    resources :users, only: [:index]
+  end
+  post 'users/guest_sign_in', to: 'sessions#guest_sign_in'
+  post 'users/guest_admin_sign_in', to: 'sessions#guest_admin_sign_in'
 end

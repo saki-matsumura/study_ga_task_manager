@@ -1,0 +1,10 @@
+<%= link_to '<戻る', calendar_tasks_path, class: "browser_back" %>
+<div class="page_title">
+  <p>ユーザー - 一覧</p>
+</div>
+
+<% @users.each do |user| %>
+  <ul>
+    <li><%= user.name %></li>
+  </ul>
+<% end %>
