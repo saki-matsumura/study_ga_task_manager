@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :show, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookmarks, only: [:create, :destroy]
+  resources :instructions, only: [:index]
   namespace :admin do
     resources :users, only: [:index]
   end
