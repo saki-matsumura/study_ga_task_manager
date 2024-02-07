@@ -1,3 +1,56 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// flex化した要素を左右中央よせにし、縦並びにする
+.form_center {
+  display: flex;        /* 子要素をflex化 */
+  align-items: center;  // 左右中央よせ
+  flex-direction: column;  // 縦並び
+}
+
+.signin {
+  padding-top: 50px;
+}
+
+.signin h1 {
+  font-size: 28px;
+  padding: 10px 0 10px 0;
+}
+
+.signin_frame {
+  padding: 20px;
+  box-shadow: 1px 0 5px 1px #CCC;
+  min-width: 400px;
+  max-width: 500px;
+  border-radius: 2%;
+//   justify-content: center;  // 上下中央よせ
+}
+
+.signin_frame td {
+  padding: 10px 5px 10px 5px ;
+}
+
+.signin_frame tr:last-child>* {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.text_area {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #CCC;
+  padding: 5px 10px;
+}
+
+// ゲストログイン
+.gest {
+  padding: 20px;
+  width: 40%;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.gest_bottun {
+  width: 230px;
+}

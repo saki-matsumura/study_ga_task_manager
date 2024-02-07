@@ -37,6 +37,14 @@ ja:
       unit:
         day: 日
         hour: 時間
+  sessions:
+    new:
+      title: TaskManager
+      signin: ログイン
+      gest_signin: ゲストログイン（一般）
+      gest_admin_signin: ゲストログイン（管理者）
+      new_account: 新しいアカウントを作る
+      how_to: 使い方を見る
   date:
     abbr_day_names:
     - 日
@@ -150,6 +158,10 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+    label:
+      session:
+        email: メール
+        password: パスワード
   number:
     currency:
       format:

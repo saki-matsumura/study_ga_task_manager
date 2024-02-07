@@ -16,9 +16,9 @@
 
   <body>
 
-  <% if !logged_in? && !@title_off %>
-    <h1>TaskManager</h1>
-  <% end %>
+  <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, id: "#{key}") %>
+    <% end %>
 
     <%= yield %>
   </body>

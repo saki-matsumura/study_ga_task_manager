@@ -1,22 +1,35 @@
 <%# ログイン %>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+<div class = "signin form_center">
+  
+  <div class = "signin_frame form_center">
+    <h1><%= t('.title') %></h1>
+    <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+      <table>
+        <tr>
+          <td><%= f.label :email %></td>
+          <td><%= f.email_field :email, class: "text_area" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password %></td>
+          <td><%= f.password_field :password, class: "text_area" %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= f.submit t('.signin'), class: "btn btn-primary" %></td>
+        </tr>
+      </table>
+    <% end %>
+    <br>
+    <p><%= link_to t('.new_account'), new_user_path, class: "text-primary"%></p>
+  </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %><br>
-  <br>
+  <div class = "gest">
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
-  <br>
+    <%= link_to t('.gest_signin'), users_guest_sign_in_path, method: :post, class: "btn btn-outline-primary gest_bottun" %>
+    <br><br>
+    <%= link_to t('.gest_admin_signin'), users_guest_admin_sign_in_path, method: :post, class: "btn btn-outline-primary gest_bottun" %>
+    <br><br>
+    
+    <p><b><%= link_to t('.how_to'), instructions_path, class: "text-primary gest_bottun"%></b></p>
 
-  <%= f.submit 'ログイン', class: "btn btn-primary" %><br>
-  <br>
-<% end %>
-
-<%= link_to 'ゲストログイン（一般）', users_guest_sign_in_path, method: :post, class: "btn btn-outline-primary" %>
-<br><br>
-<%= link_to 'ゲストログイン（管理者）', users_guest_admin_sign_in_path, method: :post, class: "btn btn-outline-primary" %>
-<br><br>
-<p><%= link_to '新しいアカウントを作る', new_user_path, class: "text-primary"%></p>
-<br>
-<p><b><%= link_to '使い方を見る', instructions_path, class: "text-primary"%></b></p>
+  </div>
+</div>
