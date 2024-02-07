@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 // flex化した要素を左右中央よせにし、縦並びにする
+.form_side {
+  display: flex;        /* 子要素をflex化 */
+  justify-content: center;  // 上下中央よせ
+//   flex-direction: row;  // 横並び
+}
+
 .form_center {
   display: flex;        /* 子要素をflex化 */
   align-items: center;  // 左右中央よせ
@@ -24,7 +30,6 @@
   min-width: 400px;
   max-width: 500px;
   border-radius: 2%;
-//   justify-content: center;  // 上下中央よせ
 }
 
 .signin_frame td {
@@ -46,11 +51,20 @@
 // ゲストログイン
 .gest {
   padding: 20px;
-  width: 40%;
-  text-align: center;
   padding-top: 50px;
+  min-width: 400px;
+  max-width: 500px;
+  text-align: center;
 }
 
 .gest_bottun {
   width: 230px;
+}
+
+// コンセプト
+.concept {
+  padding: 50px 0px 30px 50px;
+  min-width: 400px;
+  max-width: 500px;
+  color: #6c757d;
 }

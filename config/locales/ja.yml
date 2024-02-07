@@ -45,6 +45,13 @@ ja:
       gest_admin_signin: ゲストログイン（管理者）
       new_account: 新しいアカウントを作る
       how_to: 使い方を見る
+      concept_title: Concept
+      consept_comment: |
+        このアプリは、日々FAXで仕事の依頼が届き、
+        タスク管理に苦労している友人のために作成しました。
+
+        OCR（文字認識機能）を用い、
+        紙の指示書から必要な情報を抜き出してタスク化します。
   date:
     abbr_day_names:
     - 日
