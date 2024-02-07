@@ -1,34 +1,65 @@
 <%= form_with(model: @user, local: true) do |f| %> 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+  <div class="form_side signin">
+    <div class = "form_center">
+      <% if action_name == "new"%>
+        <div class = "signin_frame user_form_center form_center">
+        <% else %>
+        <div class = "user_form_center form_center">
+      <% end %>
+        <table>
+          <tr>
+            <td colspan="2">
+              <div class="icon_size_default center">
+                <%= image_tag default_img(@user.icon&.url)%>
+              </div>
+            </td>
+          </tr>
+          <tr> 
+            <td colspan="2"><%= f.file_field :icon, class: "icon_size_default icon_center" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :name %></td>
+            <td><%= f.text_field :name, class: "text_area" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :email %></td>
+            <td><%= f.email_field :email, class: "text_area" %></td>
+          </tr>
+            <td><%= f.label :password %></td>
+            <td><%= f.password_field :password, class: "text_area" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :password_confirmation %></td>
+            <td><%= f.password_field :password_confirmation, class: "text_area" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :roll %></td>
+            <td><%= f.select(:roll, User.rolls_i18n.invert, {}) %></td>
+          </tr>
+          <tr>
+            <td colspan="2"><%= f.submit class: "btn btn-primary" %></td>
+          </tr>
+        </table>
+        
+      </div>
+      <% if action_name == "new"%>
+          <br><br>
+          <%= link_to t('users.new.sign_in'), new_session_path %>
         <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <p><div class="icon_size_default">
-  <%= image_tag default_img(@user.icon&.url)%>
+    </div>
+    
+    <% if @user.errors.any? %>
+      <div class = "right_side text-danger">
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <%= f.file_field :icon %></p>
-
-  <p><b><%= f.label :name %>：</b>
-  <%= f.text_field :name %></p>
-
-  <p><b><%= f.label :email %>：</b>
-  <%= f.email_field :email %></p>
-
-  <p><b><%= f.label :password %>：</b>
-  <%= f.password_field :password %></p>
-
-  <p><b><%= f.label :password_confirmation %>：</b>
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><b><%= f.label :roll %>：</b>
-  <%= f.select(:roll, User.rolls_i18n.invert, {}) %> </p>
-
-  <%= f.submit "#{@submit_text}", class: "btn btn-primary" %>
 <% end %>

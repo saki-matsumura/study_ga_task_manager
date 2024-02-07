@@ -19,7 +19,7 @@
   padding-top: 50px;
 }
 
-.signin h1 {
+h1 {
   font-size: 28px;
   padding: 10px 0 10px 0;
 }
@@ -32,11 +32,11 @@
   border-radius: 2%;
 }
 
-.signin_frame td {
+.signin td {
   padding: 10px 5px 10px 5px ;
 }
 
-.signin_frame tr:last-child>* {
+.signin tr:last-child>* {
   text-align: center;
   padding-top: 20px;
 }
@@ -62,9 +62,16 @@
 }
 
 // コンセプト
-.concept {
+.right_side {
   padding: 50px 0px 30px 50px;
   min-width: 400px;
   max-width: 500px;
+}
+
+.concept {
   color: #6c757d;
+}
+
+.debug {
+  background: #d9e3ec;
 }

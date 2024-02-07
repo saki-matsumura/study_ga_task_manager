@@ -6,3 +6,23 @@
 .field_with_errors {
   display: contents;
 }
+
+.center {
+  text-align: center;
+}
+
+#notice {
+  color: #198754;
+  background-color: #d1e7dd;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+}
+
+#danger {
+  color: #dc3545;
+  background-color: #f8d7da;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+}

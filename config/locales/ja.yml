@@ -26,6 +26,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード再入力
         icon: アイコン
+        roll: ロール
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -33,6 +34,10 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
   enums:
+    user:
+      roll:
+        general: 一般
+        admin: 管理者
     working_process:
       unit:
         day: 日
@@ -47,11 +52,19 @@ ja:
       how_to: 使い方を見る
       concept_title: Concept
       consept_comment: |
-        このアプリは、日々FAXで仕事の依頼が届き、
+        このアプリは、日々仕事の依頼がFAXで届き、
         タスク管理に苦労している友人のために作成しました。
 
         OCR（文字認識機能）を用い、
         紙の指示書から必要な情報を抜き出してタスク化します。
+  users:
+    form:
+      title:  アカウント作成
+    new:
+      title: アカウント作成
+      sign_in: アカウントをお持ちの方
+    show:
+      title: マイページ
   date:
     abbr_day_names:
     - 日

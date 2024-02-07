@@ -5,11 +5,29 @@
 // アイコンサイズ（デフォルト）
 .icon_size_default img{
   border-radius:50%;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 }
 .icon_size_mini img{
   border-radius:50%;
   width: 30px;
   height: 30px;
+}
+
+.user_form_center {
+  padding: 20px;
+  min-width: 500px;
+  max-width: 600px;
+}
+
+.user_form_center td {
+  padding: 10px 5px 10px 5px ;
+}
+
+.user_form_center tr {
+  max-width: 490px;
+  max-width: 590px;
+}
+.user_form_center table {
+  max-width: max-content;
 }
