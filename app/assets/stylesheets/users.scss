@@ -29,5 +29,9 @@
   max-width: 590px;
 }
 .user_form_center table {
-  max-width: max-content;
+  table-layout:fixed;
+  max-width: 500px;
+  max-width: 600px;
+  // max-width: max-content;
+
 }

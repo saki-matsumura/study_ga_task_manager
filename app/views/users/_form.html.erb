@@ -1,11 +1,13 @@
 <%= form_with(model: @user, local: true) do |f| %> 
-  <div class="form_side signin">
+<% if action_name == "new"%>
+  <div class="form_side add_pading_top">
     <div class = "form_center">
-      <% if action_name == "new"%>
-        <div class = "signin_frame user_form_center form_center">
-        <% else %>
-        <div class = "user_form_center form_center">
-      <% end %>
+      <div class = "signin_frame user_form_center form_center">
+<% else %>
+  <div class="form_side">
+    <div class = "form_center">
+      <div class = "user_form_center form_center">
+<% end %>
         <table>
           <tr>
             <td colspan="2">
@@ -36,7 +38,7 @@
             <td><%= f.label :roll %></td>
             <td><%= f.select(:roll, User.rolls_i18n.invert, {}) %></td>
           </tr>
-          <tr>
+          <tr class = "center">
             <td colspan="2"><%= f.submit class: "btn btn-primary" %></td>
           </tr>
         </table>

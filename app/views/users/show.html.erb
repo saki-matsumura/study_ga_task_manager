@@ -1,11 +1,27 @@
 <%= link_to '<戻る', calendar_tasks_path, class: "browser_back" %>
 <div class="page_title">
-  <p>マイページ</p>
+  <p><%= t('.title') %></p>
 </div>
-
-<p class="icon_size_default"><%= image_tag default_img(@user.icon&.url) %></p>
-<p><%= @user.name %></p>
-<p>メールアドレス: <%= @user.email %></p>
-
-<%= link_to '編集', edit_user_path(@user.id), class: "btn btn-outline-primary" %><br>
-<br>
+<div class = "form_center">
+  <div class = "user_form_center form_center center">
+    <table>
+      <tr>
+        <td colspan="2">
+          <div class="icon_size_default">
+            <%= image_tag default_img(@user.icon&.url) %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td><%= t('activerecord.attributes.users.email') %></td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td colspan="2" class = "center"><%= link_to '編集', edit_user_path(@user.id), class: "btn btn-outline-primary" %></td>
+      </tr>
+    </table>
+  </div>
+</div>

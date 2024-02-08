@@ -65,6 +65,8 @@ ja:
       sign_in: アカウントをお持ちの方
     show:
       title: マイページ
+    edit:
+      title: ユーザー情報編集
   notice:
     sign_out: ログアウトしました
     sign_in: ログインしました
