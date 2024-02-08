@@ -52,11 +52,11 @@ ja:
       how_to: 使い方を見る
       concept_title: Concept
       consept_comment: |
-        このアプリは、日々仕事の依頼がFAXで届き、
-        タスク管理に苦労している友人のために作成しました。
+        このアプリは、OCR（文字認識機能）を用い、
+        紙の指示書から必要な情報を抜き出して、タスク化します。
 
-        OCR（文字認識機能）を用い、
-        紙の指示書から必要な情報を抜き出してタスク化します。
+        日々の業務依頼がFAXで届き、
+        タスク管理に苦労している、友人のために作成しました。
   users:
     form:
       title:  アカウント作成
@@ -65,6 +65,18 @@ ja:
       sign_in: アカウントをお持ちの方
     show:
       title: マイページ
+  notice:
+    sign_out: ログアウトしました
+    sign_in: ログインしました
+    gest_user_sign_in: ゲストユーザーとしてログインしました
+    gest_admin_user_sig_in: ゲストユーザー（管理者）としてログインしました
+    user_update: ユーザー情報を更新しました
+    task_create: タスクを作成しました
+    task_update: タスクを更新しました
+  danger: 
+    sign_in_failed: メールアドレスかパスワードが間違っています
+    only_administrators: 管理者以外はアクセスできません
+    task_delete: タスクを削除しました
   date:
     abbr_day_names:
     - 日

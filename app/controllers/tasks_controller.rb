@@ -31,7 +31,8 @@ class TasksController < ApplicationController
   def create
     set_task_form
     if @task_form.save
-      redirect_to task_path(@task_form.task), notice: "タスクを作成しました"
+      # msg：タスクを作成しました
+      redirect_to task_path(@task_form.task), notice: t('notice.task_create')
     else
       render :new
     end
@@ -51,7 +52,8 @@ class TasksController < ApplicationController
     set_task_form
     task_form_params
     if @task_form.update(current_user, task_params)
-      redirect_to task_path(@task), notice: "タスクを編集しました"
+      # msg：タスクを更新しました
+      redirect_to task_path(@task), notice: t('notice.task_update')
     else
       render :edit
     end
@@ -63,7 +65,8 @@ class TasksController < ApplicationController
       working_process.destroy
     end
     @task.destroy
-    redirect_to tasks_path, notice: "タスクを削除しました"
+    # msg：タスクを削除しました
+    redirect_to tasks_path, notice: t('danger.task_delete')
   end
 
   private
