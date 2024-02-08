@@ -69,6 +69,15 @@ ja:
       title: マイページ
     edit:
       title: ユーザー情報編集
+  tasks:
+    index:
+      title: タスク - 一覧
+    new:
+      title: タスク - 登録
+    edit:
+      title: タスク - 編集
+    show:
+      title: タスク - 詳細
   task_form:
     crient:
       name: 取引先

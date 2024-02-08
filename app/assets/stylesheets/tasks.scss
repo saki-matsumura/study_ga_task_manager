@@ -6,40 +6,6 @@
   max-width: 300px;
 }
 
-.browser_back{
-  position:fixed;
-  z-index: 9999;/*ボタンを最前面に*/
-  top:20px;
-  left: 10px;
-  cursor: pointer;
-  width: 50px;
-  height:50px;
-}
-
-.user_icon{
-  position:fixed;
-  top:20px;
-  right: 10px;
-  cursor: pointer;
-  width: 50px;
-  height:50px;
-}
-
-.page_title{
-  top:10px;
-  height:70px;
-  text-align: center;
-  pointer-events: none
-}
-
-.page_title p {
-  position:fixed;
-  inset: 0;
-  top:20px;
-  text-align: center;
-  pointer-events: none
-}
-
 .task_key {
   // color: #d9e3ec;
   font-size: medium;
