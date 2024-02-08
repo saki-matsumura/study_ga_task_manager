@@ -15,10 +15,6 @@
   flex-direction: column;  // 縦並び
 }
 
-// .signin {
-//   padding-top: 50px;
-// }
-
 h1 {
   font-size: 28px;
   padding: 10px 0 10px 0;
@@ -32,23 +28,11 @@ h1 {
   border-radius: 2%;
 }
 
-.signin td {
-  padding: 10px 5px 10px 5px ;
-}
-
 .signin tr:last-child>* {
-  text-align: center;
   padding-top: 20px;
 }
 
-.text_area {
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #CCC;
-  padding: 5px 10px;
-}
-
-// ゲストログイン
+// -- ゲストログイン --
 .gest {
   padding: 20px;
   padding-top: 50px;
@@ -61,7 +45,7 @@ h1 {
   width: 230px;
 }
 
-// コンセプト
+// -- コンセプト --
 .right_side {
   padding: 50px 0px 30px 50px;
   min-width: 400px;

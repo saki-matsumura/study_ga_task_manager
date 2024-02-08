@@ -41,6 +41,7 @@ class TasksController < ApplicationController
   def show
     @working_processes = WorkingProcess.where('task_id = ?', @task.id)
     @bookmark = current_user.bookmarks.find_by(task_id: @task.id)
+    # binding.pry
   end
 
   def edit

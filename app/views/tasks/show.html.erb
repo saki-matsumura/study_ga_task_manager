@@ -1,42 +1,111 @@
-<%= link_to '<戻る', redirect, class: "browser_back" %>
+<%#= link_to '<戻る', redirect, class: "browser_back" %>
+<%= link_to '<戻る', calendar_tasks_path, class: "browser_back" %>
 <div class="page_title">
   <p>タスク - 詳細</p>
 </div>
-<%# お気に入り %>
-<p>
-<% if @bookmark.present? %>
-    <%# 解除 %>
-    <%= link_to bookmark_path(id: @bookmark.id), method: :delete, class: 'text-warning' do %>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-      <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg>
+
+<div class = "form_center task_show">
+  <table>
+    <!-- タイトル -->
+    <tr>
+      <td class = "task_show_td_icon center">
+        <% if @task.done %>
+          <div class = "text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-square-fill" viewBox="0 0 16 16">
+              <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z"/>
+            </svg>
+          </div>
+        <% else %>
+          <div class = "text-secondary center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            </svg>
+          </div>
+        <% end %>
+      </td>
+      <td>
+        <div class = "task_key text-black-50"><%= t('activerecord.attributes.task.title') %></div>
+        <div class = "task_value" ><%= @task.title %></div>
+      </td>
+    </tr>
+    <!-- メモ -->
+    <tr>
+      <td colspan="2">
+        <div class = "task_key text-black-50"><%= t('activerecord.attributes.task.note') %></div>
+        <div class = "task_value" ><%= @task.note %></div>
+      </td>
+    </tr>
+    <!-- 納期 -->
+    <tr>
+      <td colspan="2">
+        <div class = "task_key text-black-50"><%= t('activerecord.attributes.task.deadline_on') %></div>
+        <div class = "task_value" ><%= @task.deadline_on %></div>
+      </td>
+    </tr>
+    <!-- 取引先 -->
+    <tr>
+      <td colspan="2">
+        <div class = "task_key text-black-50"><%= t('activerecord.attributes.client.name') %></div>
+        <div class = "task_value" ><%= @task.client&.name %></div>
+      </td>
+    </tr>
+    <!-- 作業工程 -->
+    <% @working_processes.each do |process| %>
+
+      <tr>
+        <td colspan="2">
+          <div class = "task_key text-black-50"><%= t('activerecord.attributes.task/type_of_tasks.name') %></div>
+          <div class = "task_value" ><%= process.type_of_task&.name %></div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <!-- 作業量 -->
+          <div class = "working_process_side">
+            <div>
+              <div class = "task_key text-black-50"><%= t('activerecord.attributes.working_process.workload') %></div>
+              <div class = "task_value_short" ><%= process.workload %></div>
+            </div>
+            <div>
+              <div class = "task_key text-black-50"><%= t('activerecord.attributes.working_process.working_hour') %></div>
+              <div class = "task_value_short" ><%= process.working_hour %><%= process.unit %></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class = "center task_show_td_icon" >
+          <%# お気に入り %>
+          <% if @bookmark.present? %>
+              <%# 解除 %>
+              <%= link_to bookmark_path(id: @bookmark.id), method: :delete, class: 'text-warning' do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+              <% end %>
+            <% else %>
+              <%# 登録 %>
+              <%= link_to bookmarks_path(task_id: @task.id), method: :post, class: 'text-secondary' do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                </svg>
+              <% end %>
+          <% end %>
+        </td>
+        <td>
+          <%= t('task_form.bookmark') %>
+        </td>
+      </tr>
+      <% if @task.image.url %>
+        <tr>
+          <td>
+            <div class = "task_value"><%= image_tag @task.image.url, class: 'image_size_default' %></p>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
-  <% else %>
-    <%# 登録 %>
-    <%= link_to bookmarks_path(task_id: @task.id), method: :post, class: 'text-secondary' do %>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-      </svg>
-    <% end %>
-<% end %>
-</p>
-<p>完了チェック：<%= @task.done %></p>
-<p>タイトル：<%= @task.title %></p>
-<p>メモ：<%= @task.note %></p>
-<p>納期：<%= @task.deadline_on %></p>
-
-<p>取引先：<%= @task.client&.name %></p>
-<% @working_processes.each do |process| %>
-  <p>工程：<%= process.type_of_task&.name %></p>
-  <p>作業量：<%= process.workload %></p>
-  <p>作業時間：<%= process.working_hour %><%= process.unit %></p>
-<% end %>
-
-<% if @task.image.url %>
-<p><%= @task.image.url %></p>
-<p><%= image_tag @task.image.url, class: 'image_size_default' %></p>
-<% end %>
-
-<p>
-<%= link_to '編集', edit_task_path, class: "btn btn-outline-primary" %>
-</p>
+  </table>
+  <div class = "center">
+    <%= link_to '編集', edit_task_path, class: "btn btn-outline-primary bottun" %>
+  </div>
+</div>

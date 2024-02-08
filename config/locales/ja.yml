@@ -6,16 +6,18 @@ ja:
       client: 取引先
       type_of_task: 工程の種類
       working_process: 工程
+      task_form: タスクフォーム
     attributes:
       task:
         title: タイトル
         note: メモ
         deadline_on: 納期
-        done: 完了チェック
+        done: 完了
+        image: アップロード
       client:
         name: 取引先
       task/type_of_tasks:
-        name: 工程名
+        name: 作業工程
       working_process:
         workload: 作業量
         working_hour: 作業時間
@@ -67,6 +69,15 @@ ja:
       title: マイページ
     edit:
       title: ユーザー情報編集
+  task_form:
+    crient:
+      name: 取引先
+    type_of_task:
+      name: 作業工程
+    working_process:
+      workload: 作業量
+      working_hour: 作業時間
+    bookmark: ブックマーク
   notice:
     sign_out: ログアウトしました
     sign_in: ログインしました

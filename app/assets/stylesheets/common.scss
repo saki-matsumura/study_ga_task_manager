@@ -2,19 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// エラーが出た時にCSSを崩さない
+// -- デバッグ用 --
+// .debug {
+//   background: #d9e3ec;
+// }
+
+// .debug_table table, th, td {
+//   border:1px solid #d9e3ec;
+// }
+
+// -- エラーが出た時にCSSを崩さない --
 .field_with_errors {
   display: contents;
 }
 
-.debug {
-  background: #d9e3ec;
-}
-
+// -- レイアウト調整 --
 .center {
   text-align: center;
 }
 
+.add_pading_top {
+  padding-top: 50px;
+}
+
+// -- フラッシュメッセージ --
 #notice {
   color: #198754;
   background-color: #d1e7dd;
@@ -31,6 +42,22 @@
   padding-left: 30px;
 }
 
-.add_pading_top {
-  padding-top: 50px;
+// -- テーブル系 --
+tr {
+  height: auto;
+}
+td {
+  padding: 10px 5px 10px 5px ;
+}
+
+.text_area {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #CCC;
+  padding: 5px 10px;
+}
+
+.bottun {
+  width: 150px;
+  margin-top: 20px;
 }
