@@ -6,36 +6,41 @@
   max-width: 300px;
 }
 
-.browser_back{
-  position:fixed;
-  z-index: 9999;/*ボタンを最前面に*/
-  top:20px;
-  left: 10px;
-  cursor: pointer;
+.task_key {
+  // color: #d9e3ec;
+  font-size: medium;
+  // padding-bottom: 0;
+}
+
+.task_value {
+  width: 100%;
+  // padding-top: 0;
+}
+
+.task_value_short{
+  width: 90%;
+}
+
+.working_process_side {
+  display: flex;        /* 子要素をflex化 */
+  flex-direction: row;  // 横並び
+}
+
+.time_unit {
+  display: flex;        /* 子要素をflex化 */
+  justify-content: center;  // 上下中央よせ
+  align-items: center;  // 左右中央よせ
+  // height: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  // flex-direction: row;  // 横並び　
+}
+
+.task_show table {
+  min-width: 400px;
+  min-width: 460px;
+}
+
+.task_show_td_icon {
   width: 50px;
-  height:50px;
-}
-
-.user_icon{
-  position:fixed;
-  top:20px;
-  right: 10px;
-  cursor: pointer;
-  width: 50px;
-  height:50px;
-}
-
-.page_title{
-  top:10px;
-  height:70px;
-  text-align: center;
-  pointer-events: none
-}
-
-.page_title p {
-  position:fixed;
-  inset: 0;
-  top:20px;
-  text-align: center;
-  pointer-events: none
 }

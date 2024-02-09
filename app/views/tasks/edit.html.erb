@@ -1,7 +1,11 @@
 <%= link_to '<戻る', :back, class: "browser_back" %>
 <div class="page_title">
-  <p>タスク - 編集</p>
+  <p><%= t('.title') %></p>
 </div>
+<div class = "form_center">
+  <%= render 'form' %>
 
-<%= render 'form' %>
-<%= link_to '削除', task_path(@task.id), method: :delete ,data: { confirm: '本当に削除してよろしですか？'}, class: "btn btn-outline-danger" %>
+  <div class = "center">
+    <%= link_to '削除', task_path(@task.id), method: :delete ,data: { confirm: '本当に削除してよろしですか？'}, class: "btn btn-outline-danger bottun" %>
+  </div>
+</div>

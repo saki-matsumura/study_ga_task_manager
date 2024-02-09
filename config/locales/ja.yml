@@ -6,16 +6,18 @@ ja:
       client: 取引先
       type_of_task: 工程の種類
       working_process: 工程
+      task_form: タスクフォーム
     attributes:
       task:
         title: タイトル
         note: メモ
         deadline_on: 納期
-        done: 完了チェック
+        done: 完了
+        image: アップロード
       client:
         name: 取引先
       task/type_of_tasks:
-        name: 工程名
+        name: 作業工程
       working_process:
         workload: 作業量
         working_hour: 作業時間
@@ -26,6 +28,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード再入力
         icon: アイコン
+        roll: ロール
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -33,10 +36,70 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
   enums:
+    user:
+      roll:
+        general: 一般
+        admin: 管理者
     working_process:
       unit:
         day: 日
         hour: 時間
+  sessions:
+    new:
+      title: TaskManager
+      signin: ログイン
+      gest_signin: ゲストログイン（一般）
+      gest_admin_signin: ゲストログイン（管理者）
+      new_account: 新しいアカウントを作る
+      how_to: 使い方を見る
+      concept_title: Concept
+      consept_comment: |
+        このアプリは友人の仕事を少しでも楽にするために作りました。
+        
+        友人は印刷会社で働いています。
+        依頼はいまだにFAXで届き、フォーマットはクライアントによってバラバラです。それらを一枚ずつ読み解いて、ホワイトボードに要点を転記してタスクを管理しているそうです。
+
+        その仕事を少しでも楽にするべく、画像認証技術（OCR）を使い、紙の指示書から必要な情報を抜き出して、タスク化するようなアプリを作成しました。
+  users:
+    form:
+      title:  アカウント作成
+    new:
+      title: アカウント作成
+      sign_in: アカウントをお持ちの方
+    show:
+      title: マイページ
+    edit:
+      title: ユーザー情報編集
+  tasks:
+    index:
+      title: タスク - 一覧
+    new:
+      title: タスク - 登録
+    edit:
+      title: タスク - 編集
+    show:
+      title: タスク - 詳細
+  task_form:
+    crient:
+      name: 取引先
+    type_of_task:
+      name: 作業工程
+    working_process:
+      workload: 作業量
+      working_hour: 作業時間
+    bookmark: ブックマーク
+  notice:
+    sign_out: ログアウトしました
+    sign_in: ログインしました
+    gest_user_sign_in: ゲストユーザーとしてログインしました
+    gest_admin_user_sig_in: ゲストユーザー（管理者）としてログインしました
+    user_update: ユーザー情報を更新しました
+    task_create: タスクを作成しました
+    task_update: タスクを更新しました
+  danger: 
+    sign_in_failed: メールアドレスかパスワードが間違っています
+    only_administrators: 管理者以外はアクセスできません
+    task_delete: タスクを削除しました
   date:
     abbr_day_names:
     - 日
@@ -150,6 +213,10 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+    label:
+      session:
+        email: メール
+        password: パスワード
   number:
     currency:
       format:

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def new
     return redirect_to calendar_tasks_path if logged_in?
     @user = User.new
-    @submit_text = "アカウント登録"
+    # @submit_text = "アカウント登録"
   end
 
   def create
@@ -28,7 +28,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path, notice: "ユーザー情報を編集しました！"
+      # msg：ユーザー情報を更新しました
+      redirect_to user_path, notice: t('notice.user_update')
     else
       render :edit
     end

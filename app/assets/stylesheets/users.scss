@@ -2,14 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-// アイコンサイズ（デフォルト）
+//  -- アイコンサイズ --
 .icon_size_default img{
   border-radius:50%;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 }
 .icon_size_mini img{
   border-radius:50%;
   width: 30px;
   height: 30px;
+}
+
+//  -- ユーザー情報入力 --
+.user_form_center {
+  padding: 20px;
+  min-width: 500px;
+  max-width: 600px;
+}
+.user_form_center tr {
+  max-width: 490px;
+  max-width: 590px;
+}
+.user_form_center table {
+  table-layout:fixed;
+  max-width: 500px;
+  max-width: 600px;
 }

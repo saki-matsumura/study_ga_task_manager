@@ -1,5 +1,8 @@
 <%= link_to '<戻る', user_path(current_user.id) %>
-
+<div class="page_title">
+  <p><%= t('.title') %></p>
+</div>
 <%# <h1>ユーザ情報編集</h1> %>
-
-<%= render 'form' %>
+<div class = "form_center">
+  <%= render 'form' %>
+</div>

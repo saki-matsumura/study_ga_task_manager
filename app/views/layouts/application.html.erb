@@ -16,10 +16,12 @@
 
   <body>
 
-  <% if !logged_in? && !@title_off %>
-    <h1>TaskManager</h1>
-  <% end %>
-
+    <% if logged_in? %>
+      <div class = "back_of_header"></div>
+    <% end %>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, id: "#{key}", class: "flash_msg_box") %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

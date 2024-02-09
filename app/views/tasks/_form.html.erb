@@ -1,7 +1,7 @@
 <%= form_with(model: @task_form.task, local: true, url: choose_new_or_edit) do |form| %>
   <% if @task_form.task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @task_form.task.errors.count %>件のエラーがあります。</h2>
+    <div id="error_explanation" class = "text-danger">
+      <!--<h2><%= @task_form.task.errors.count %>件のエラーがあります。</h2>-->
       <ul>
       <% @task_form.task.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -12,8 +12,110 @@
 
   <%# 画像認証機能 %>
   <%= javascript_pack_tag 'tasks/_form' %>
-  <%= form.label :image %>
-  <%= form.file_field :image, capture: "environment", accept: "image/*", class: "image_size_default" %>
+  <!-- テーブル作成 -->
+  <table>
+    <tr><!-- 画像 -->
+      <td colspan="2" class = "task_key text-black-50">
+        <%= form.label :image %><br>
+        <%= form.file_field :image, capture: "environment", accept: "image/*", class: "image_size_default" %>
+      </td>
+    </tr>
+    <tr><!-- タスクのタイトル -->
+      <td class = "center">
+      <!-- <%= form.label :done, class: "task_key text-black-50" %><br> -->
+        <%= form.check_box :done %>
+      </td>
+      <td>
+        <%= form.label :title, class: "task_key text-black-50" %><br>
+        <%= form.text_field :title, class: "text_area task_value" %>
+      </td>
+    </tr>
+    <tr><!-- メモ -->
+      <td colspan="2">
+        <%= form.label :note, class: "task_key text-black-50" %><br>
+        <%= form.text_area :note, class: "text_area  task_value"%>
+      </td>
+    </tr>
+    <tr><!-- 納期 -->
+      <td colspan="2">
+        <%= form.label :deadline_on, class: "task_key text-black-50" %><br>
+        <%= form.date_field :deadline_on %></td>
+    </tr>
+    <!---------- 編集時 ---------->
+    <%if @task_form.task.id %>
+    <tr><!-- 取引先 -->
+      <td colspan="2">
+        <div class = "task_key text-black-50"><%= t('task_form.crient.name') %></div>
+        <%= text_field_tag 'task[clients][name]',  @task_form.client&.name, class: "text_area  task_value" %>
+      </td>
+    </tr>
+    <tr><!-- 作業工程 -->
+      <td colspan="2">
+        <div class = "task_key text-black-50"><%= t('task_form.type_of_task.name') %></div>
+        <%= text_field_tag 'task[type_of_tasks][name]',  @task_form.type_of_task&.name, class: "text_area  task_value" %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <!-- 作業量 -->
+        <div class = "working_process_side">
+          <div>
+            <div class = "task_key text-black-50"><%= t('task_form.working_process.workload') %></div>
+            <%= number_field_tag 'task[working_process][workload]',  @task_form.working_process&.workload, class: "text_area task_value_short" %>
+          </div>
+          <!-- 作業時間 -->
+          <div>
+            <div class = "task_key text-black-50"><%= t('task_form.working_process.working_hour') %></div>
+            <%= number_field_tag 'task[working_process][working_hour]',  @task_form.working_process&.working_hour, class: "text_area task_value_short" %>
+          </div>
+          <div class = "time_unit">
+            <%= select_tag 'task[working_process][unit]',  options_for_select(WorkingProcess.units_i18n.invert, @task_form.working_process&.unit) %>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <% else %>
+    <!---------- 新規作成時 ---------->
+    <tr><!-- 取引先 -->
+      <td colspan="2">
+        <%= form.fields_for :clients do | clients_form | %>
+          <div class = "task_key text-black-50"><%= t('task_form.crient.name') %></div>
+          <%= clients_form.text_field :name, class: "text_area  task_value" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr><!-- 作業工程 -->
+      <td colspan="2">
+        <%= form.fields_for :type_of_tasks do | type_of_tasks_form | %>
+          <div class = "task_key text-black-50"><%= t('task_form.type_of_task.name') %></div>
+          <%= type_of_tasks_form.text_field :name, class: "text_area  task_value" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= form.fields_for :working_process do | working_processes_form | %>
+          <!-- 作業量 -->
+          <div class = "working_process_side">
+            <div>
+              <div class = "task_key text-black-50"><%= t('task_form.working_process.workload') %></div>
+              <%= working_processes_form.number_field :workload, class: "text_area task_value_short" %>
+            <!-- 作業時間 -->
+            </div>
+            <div>
+              <div class = "task_key text-black-50"><%= t('task_form.working_process.working_hour') %></div>
+              <%= working_processes_form.number_field :working_hour, class: "text_area task_value_short" %>
+            </div>
+            <div class = "time_unit">
+              <%= working_processes_form.select(:unit, WorkingProcess.units_i18n.invert, {}, include_blank: true) %> 
+            </div>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+
   <div id="img_field">
     <% if @task_form.task.image.present? %>
       <%= image_tag(@task_form.task.image.url) %>
@@ -21,67 +123,6 @@
       <i class="fas fa-images"></i>
     <% end %>
   </div>
-
-  <p><b><%= form.label :title %></b><br>
-  <%= form.text_field :title %><br>
-  </p>
-
-  <p><b><%= form.label :done %></b><br>
-  <%= form.check_box :done %><br>
-  </p>
-
-  <p><b><%= form.label :note %></b><br>
-  <%= form.text_area :note %><br>
-  </p>
-
-  <p><b><%= form.label :deadline_on %>：</b>
-  <%= form.date_field :deadline_on %>
-  </p>
-
-  <%if @task_form.task.id %>
-    <%# ----- 編集 ----- %>
-    <%# クライアント %>
-      <p><b>取引先：</b><%= text_field_tag 'task[clients][name]',  @task_form.client&.name %></p>
-
-    <%# 工程名 %>
-      <p><b>工程名：</b><%= text_field_tag 'task[type_of_tasks][name]',  @task_form.type_of_task&.name %></p>
-
-    <%# 工程の詳細 %>
-      <p><b>作業量：</b><%= number_field_tag 'task[working_process][workload]',  @task_form.working_process&.workload %></p>
-      <p><b>作業時間：</b><%= number_field_tag 'task[working_process][working_hour]',  @task_form.working_process&.working_hour %>
-      <%= select_tag 'task[working_process][unit]',  options_for_select(WorkingProcess.units_i18n.invert, @task_form.working_process&.unit) %></p>
-
-  <%else%>
-    <%# ----- 新規 ----- %>
-    <%# クライアント %>
-    <%= form.fields_for :clients do | clients_form | %>
-      <p>
-        <b><%= clients_form.label :取引先 %>：</b>
-        <%= clients_form.text_field :name %>
-      </p>
-    <% end %>
-    <%# 工程名 %>
-    <%= form.fields_for :type_of_tasks do | type_of_tasks_form | %>
-      <p>
-      <b><%= type_of_tasks_form.label :工程名 %>：</b>
-      <%= type_of_tasks_form.text_field :name %>
-      </p>
-    <% end %>
-
-    <%# 工程の詳細 %>
-    <%= form.fields_for :working_process do | working_processes_form | %>
-      <p>
-      <b><%= working_processes_form.label :workload %>：</b>
-      <%= working_processes_form.number_field :workload %>
-      </p>
-
-      <p>
-      <b><%= working_processes_form.label :working_hour %>：</b>
-      <%= working_processes_form.number_field :working_hour %>
-      <%= working_processes_form.select(:unit, WorkingProcess.units_i18n.invert, {}, include_blank: true) %> 
-      </p>
-    <% end %>
-
-  <%end%>
-  <%= form.submit '保存', class: "btn btn-primary" %>
+  
+   <div class = "center"><%= form.submit class: "btn btn-primary bottun" %></div>
 <% end %>
